@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:string_validator/string_validator.dart';
 
 void main() {
-  runApp(const MyApp());
+  String userInput = 'http://localhost:61500this is an invalid url!!!!';
+  bool isValid = isURL(userInput); // false
+  print(isValid);
+  userInput = "https://www.geeksforgeeks.org/";
+  isValid = isURL(userInput); // true
+  print(isValid);
+
+  userInput = 'me@example.com';
+  isValid = isEmail(userInput); // true
+  print(isValid);
+  userInput = 'geeksforgeeks';
+  isValid = isEmail(userInput); // false
+  print(isValid);
+  userInput = 'password1';
+  isValid = isLength(userInput, 12); // false
+  print(isValid);
+  userInput = 'geeksforgeeks';
+  isValid = isLength(userInput, 13); // true
+  print(isValid);
+  userInput = "12";
+  isValid = isDivisibleBy(userInput, 5); //false
+  print(isValid);
+  isValid = isDivisibleBy(userInput, 4); //true
+  print(isValid);
 }
 
 class MyApp extends StatelessWidget {
